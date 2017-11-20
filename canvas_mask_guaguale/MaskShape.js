@@ -73,6 +73,8 @@
 		canvas.onmouseenter = function(e) {
 			flg = true;
 		}
+		
+		self.update();
 	}
 
 	p.update = function() {
