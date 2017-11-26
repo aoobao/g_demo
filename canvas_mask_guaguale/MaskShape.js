@@ -73,7 +73,49 @@
 		canvas.onmouseenter = function(e) {
 			flg = true;
 		}
-		
+
+		//touch事件
+		canvas.addEventListener('touchstart', function(e) {
+			_touchstart(e);
+
+		});
+
+		function _touchstart(e) {
+			if(self.drawArray.length == 0) {
+				if(typeof self._callback == 'function') {
+					self._callback.apply(self, [self]);
+				}
+			}
+			var touch = e.targetTouches[0];
+			var x = touch.clientX - canvas.offsetLeft;
+			var y = touch.clientY - canvas.offsetTop;
+			var arr = [{
+				x: x,
+				y: y
+			}];
+			self.drawArray.push(arr);
+			canvas.addEventListener('touchmove', _touchmove, false);
+			canvas.addEventListener('touchend', _touchend, false);
+
+		}
+
+		function _touchmove(e) {
+			var touch = e.changedTouches[0];
+			var x = touch.clientX - canvas.offsetLeft;
+			var y = touch.clientY - canvas.offsetTop;
+			var arr = self.drawArray[self.drawArray.length - 1];
+			arr.push({
+				x: x,
+				y: y
+			});
+			self.update();
+		}
+
+		function _touchend(e) {
+			canvas.removeEventListener('touchmove', _touchmove);
+			canvas.removeEventListener('touchend', _touchend);
+		}
+
 		self.update();
 	}
 
@@ -102,7 +144,7 @@
 			var arr = this.drawArray[i];
 			ctx.beginPath();
 			ctx.moveTo(arr[0].x, arr[0].y);
-			for(var s = 1; s < arr.length; s++) {
+			for(var s = 0; s < arr.length; s++) {
 				var temp = arr[s];
 				ctx.lineTo(temp.x, temp.y);
 			}
