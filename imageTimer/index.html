@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>剩余时间显示</title>
+	</head>
+
+	<body>
+		<div id='content'></div>
+	</body>
+	<script type="text/javascript" src="common.js"></script>
+	<script type="text/javascript" src="imageTimer.js"></script>
+	<script>
+		randImage();
+		
+		function randImage() {
+			var serviceDate = new Date();
+			for(var i = 0; i < 1000; i++) {
+				var id = 'img_' + i;
+				createImage(id);
+				var flag = Math.random() < 0.5 ? 1 : -1;
+				var num = Math.random() * 500 * flag;
+				var rndDate = new Date().dateAdd('s', num);
+
+				imageTimer.initImage(id, rndDate, serviceDate);
+
+			}
+		}
+
+		function createImage(id) {
+			var img = document.createElement("img");
+			img.id = id;
+			img.width = 64;
+			img.height = 64;
+			document.getElementById("content").appendChild(img);
+			return img;
+		}
+	</script>
+
+</html>

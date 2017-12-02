@@ -173,5 +173,8 @@
 		this.update();
 	}
 
-	window.MaskShape = MaskShape;
+	window.maskShape = function(opt) {
+		var mask = new MaskShape(opt);
+		return mask;
+	};
 })();

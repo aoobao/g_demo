@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		
+
 		<title></title>
 		<style>
 			#canvas {
@@ -25,16 +25,30 @@
 	</body>
 	<script type="text/javascript" src="MaskShape.js"></script>
 	<script>
-		var mask = new MaskShape({
+		/**
+		 * 刮刮卡
+		 * @param {Object} opt
+		 * el: canvas id
+		 * text: 显示文字
+		 * textColor: 文字颜色 默认 #000
+		 * maskColor: 蒙版颜色 默认 #000
+		 * lineWidth: 擦除线条宽度 默认 20
+		 * fontStyle: 文字样式 默认 30px Georgia
+		 * callback: 用户第一次擦除回调(奖品在第一次擦除的时候获取.)
+		 * method
+		 * 	setValue: 奖品赋值
+		 */
+		var mask = maskShape({
 			el: 'canvas',
 			text: null,
 			maskColor: "#ccc",
 			textColor: '#000',
 			lineWidth: 20,
 			fontStyle: '30px Georgia',
-			callback: function() {		//第一次擦除回调函数. this指向对象本身
+			callback: function() { //第一次擦除回调函数. this指向对象本身
+				//return 如果奖品是第一次擦除时加载进来,在callback中写ajax取值
+				//如果超过200毫秒延迟体验会比较差,可以预先做一个生产队列
 				var self = this;
-				//奖品一般都是初始化队列放在内存中,以便快速读取,如果超过200毫秒延迟体验会比较差
 				setTimeout(function() {
 					var arr = ['一等奖', '二等奖', '三等奖', '谢谢惠顾'];
 					var z = Math.floor(Math.random() * arr.length);
@@ -43,6 +57,8 @@
 			}
 		});
 
+		//修改刮刮卡中值.
+		//mask.setText('aaaa');
 	</script>
 
 </html>
