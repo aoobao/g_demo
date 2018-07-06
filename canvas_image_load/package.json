@@ -1,0 +1,32 @@
+{
+  "name": "canvas_image_load",
+  "version": "1.0.0",
+  "description": "动态加载图片效果图.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:cli": "cross-env NODE_ENV=production webpack --config build/webpack.config.build.js",
+    "build": "rimraf dist && npm run build:cli",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.dev.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "cross-env": "^5.2.0",
+    "css-loader": "^0.28.11",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "html-webpack-plugin": "^3.2.0",
+    "rimraf": "^2.6.2",
+    "style-loader": "^0.21.0",
+    "webpack": "^3.12.0",
+    "webpack-dev-server": "^2.11.2",
+    "webpack-merge": "^4.1.3"
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.0"
+  }
+}
