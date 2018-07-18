@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>CSS3 实现六边形图片展示效果</title>
+    <style type="text/css">
+        body, div, img, ul, li
+        {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul, ul li
+        {
+            list-style: none;
+        }
+        .boxF{
+          width: 100wh;
+          height: 100vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .container{
+          width: 300px;
+          height: 300px;
+          overflow: hidden;
+        }
+        .model{
+          width: 300px;
+          height: 300px;
+          position: fixed;
+          /* margin-left: -150px; */
+          top: 50%;
+          left: 50%;
+          /* margin-left: -150px; */
+          background-color: green;
+          visibility: visible;
+        }
+        
+    </style>
+</head>
+<body>
+<div class="boxF">
+    <div class="container">
+        <div class="model"></div>
+    </div>
+</div>
+</body>
+</html>
