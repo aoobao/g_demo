@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./normalize.css">
+  <style>
+    .container {
+      width: 840px;
+      margin: 0 auto;
+    }
+
+    .workflow {
+      width: 100%;
+      display: flex;
+      flex-flow: row wrap;
+      align-items: center;
+      background-color: #ececec;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+
+    .workflow .work-item {
+      /* float: left; */
+      width: 150px;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .workflow .work-item .item {
+      width: 90%;
+      height: 90%;
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #ddd;
+      font-size: 14px;
+    }
+
+    .workflow .work-item .item.active {
+      background-color: #438eff;
+      color: #fff;
+    }
+
+    .workflow .work-item .item.now {
+      background-color: coral;
+    }
+
+    .workflow .work-item .item p {
+      margin-left: 5px;
+      margin-right: 5px;
+      text-align: center;
+    }
+
+    .workflow .line {
+      /* float: left; */
+      width: 50px;
+      height: 50px;
+      margin-left: 15px;
+      margin-right: 15px;
+      /* background-color: blue; */
+      background-image: url('./arrow.png');
+      background-size: 100% 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <p>
+      欢迎来到，运营服务机构对接平台，您的厂商编码为 <span style="color: crimson;font-size: 24px;">33009989432028</span>
+    </p>
+    <p>
+      具体对接流程如下：如果您还有疑问，可在对接流程指南中下载详细流程文档
+    </p>
+    <div class="workflow">
+      <div class="work-item ">
+        <div class="item active">
+          <p>
+            运营服务平台注册认证
+          </p>
+        </div>
+      </div>
+      <div class="line"></div>
+
+      <div class="work-item">
+        <div class="item active">
+          <p>运营服务平台确认认证信息</p>
+        </div>
+      </div>
+      <div class="line"></div>
+
+      <div class="work-item">
+        <div class="item active">
+          <p>运营服务机构阅读对接文档,本地测试</p>
+
+        </div>
+      </div>
+      <div class="line"></div>
+
+      <div class="work-item">
+        <div class="item">
+          <p>运营服务机构在平台上线上测试</p>
+        </div>
+      </div>
+      <div class="line"></div>
+
+      <div class="work-item">
+        <div class="item">
+          <p>测试成功,运营平台对接确认测试结果</p>
+        </div>
+      </div>
+      <div class="line"></div>
+
+      <div class="work-item">
+        <div class="item">
+          <p>运营平台部署到正式环境</p>
+        </div>
+      </div>
+      <div class="line"></div>
+
+      <div class="work-item">
+        <div class="item">
+          <p>完成</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="remark">
+      <p>页面及下载引导：</p>
+
+
+      <p>对接流程指南——您可在此下载详细的对接流程文档</p>
+
+      <p>对接技术文档——您可在此下载详细的对接api技术文档</p>
+
+      <p>本地测试包下载——您可在此下载本地测试包，部署环境并测试接口</p>
+
+      <p>线上测试——正式对接平台前，您需要在此模块完成接口的测试并提交给我放申请正式平台对接</p>
+
+      <p>Q&A——如果您对接中遇到了相关问题，可来此模块查看相关解决方案</p>
+
+      <p>重要更新——此处会记载api文档</p>
+
+    </div>
+  </div>
+
+</body>
+
+</html>

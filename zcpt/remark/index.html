@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>工单</title>
+  <link rel="stylesheet" href="./normalize.css">
+</head>
+<style>
+  li {
+    list-style-type: none;
+  }
+
+  .container {
+    width: 840px;
+    margin: 0 auto;
+  }
+
+  .sub-text {
+    font-size: 12px;
+    color: #696969;
+  }
+
+  .sub-text .title {
+    margin-right: 5px;
+  }
+
+  .sub-text .text {
+    margin-right: 10px;
+  }
+
+  .close-order {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #000;
+  }
+
+  .close-image {
+    width: 16px;
+    height: 16px;
+    background-image: url('./close-order.png');
+    margin-right: 5px;
+  }
+
+  .close-name {
+    color: #005bc6;
+    cursor: pointer;
+  }
+
+  .close-remark {
+    color: #bcbdbd;
+  }
+
+  .order-list {
+    padding: 0;
+  }
+
+  .order-item {
+    /* color: #696969; */
+    font-size: 14px;
+    margin-top: 20px;
+  }
+
+  .order-item .header .name {
+    color: #696969;
+  }
+
+  .order-item .header .time {
+    font-size: 12px;
+    color: #999999;
+    margin-left: 5px;
+  }
+
+  .order-item .context {
+    background-color: #f2f6fa;
+    border-radius: 2px;
+    padding: 4px;
+    margin-top: 10px;
+    /* margin-bottom: 20px; */
+  }
+
+  .order-item.my .context {
+    background-color: #cde4ff;
+  }
+
+  .order-item .attachment {
+    padding: 5px;
+    border: 1px solid #cde4ff;
+  }
+
+  .order-item .attachment a {
+    margin-left: 10px;
+  }
+
+  .footer .name {
+    color: #356dec;
+    font-size: 16px;
+    margin-top: 50px;
+    margin-bottom: 10px;
+  }
+
+  .footer .textarea {
+    width: 100%;
+    height: 200px;
+    resize: none;
+    border: 1px solid #cde4ff;
+    display: block;
+  }
+
+  .footer .attachment {
+    padding: 2px;
+    width: 100%;
+    border: 1px solid #cde4ff;
+  }
+
+  .attachment-list {
+    display: inline-block;
+  }
+
+  .footer .attachment a {
+    font-size: 14px;
+  }
+
+  .footer .attachment .delete {
+    color: #f00;
+    font-size: 12px;
+    cursor: pointer;
+  }
+
+  .footer .attachment .add-attachment {
+    color: #1058ad;
+    font-size: 12px;
+    cursor: pointer;
+    position: relative;
+  }
+
+  #add-attachment-file {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .submit {
+    background-color: #356dec;
+    padding: 10px 50px;
+    color: #fff;
+    float: right;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    border: 0;
+  }
+</style>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <h2 class="title">
+        工单标题标题标题
+      </h2>
+      <span class="sub-text">
+        <span class="title">类型:</span>
+        <span class="text">JavaScript API</span>
+      </span>
+      <span class="sub-text">
+        <span class="title">创建时间:</span>
+        <span class="text">2019-04-16 13:49</span>
+      </span>
+      <div class="close-order">
+        <div class="close-image"></div>
+        <span class="close-name">关闭工单</span>
+        <span class="close-remark">（关闭将不可以再次提问）</span>
+      </div>
+    </div>
+    <div class="body">
+      <ul class="order-list">
+        <li class="order-item my">
+          <div class="header">
+            <span class="name">来自15669962935的回答</span> <span class="time">2019/04/16 13:49</span>
+          </div>
+          <div class="context">
+            <pre>
+您好,
+您的问题已确认,已反馈相关人员进行确认,感谢您的反馈.
+感谢您的致信,欢迎持续关注对接平台相关信息.</pre>
+          </div>
+        </li>
+        <li class="order-item">
+          <div class="header">
+            <span class="name">来自管理员的回答</span> <span class="time">2019/04/16 14:00</span>
+          </div>
+          <div class="context">
+            <pre>
+您好,
+您的问题已确认,已反馈相关人员进行确认,感谢您的反馈.
+感谢您的致信,欢迎持续关注对接平台相关信息.</pre>
+          </div>
+        </li>
+        <li class="order-item my">
+          <div class="header">
+            <span class="name">来自15669962935的回答</span> <span class="time">2019/04/16 13:49</span>
+          </div>
+          <div class="context">
+            <pre>
+您好,
+您的问题已确认,已反馈相关人员进行确认,感谢您的反馈.
+感谢您的致信,欢迎持续关注对接平台相关信息.</pre>
+          </div>
+        </li>
+        <li class="order-item">
+          <div class="header">
+            <span class="name">来自管理员的回答</span> <span class="time">2019/04/16 14:00</span>
+          </div>
+          <div class="context">
+            <pre>
+您好,
+您的问题已确认,已反馈相关人员进行确认,感谢您的反馈.
+感谢您的致信,欢迎持续关注对接平台相关信息.</pre>
+          </div>
+        </li>
+        <li class="order-item my">
+          <div class="header">
+            <span class="name">来自15669962935的回答</span> <span class="time">2019/04/16 13:49</span>
+          </div>
+          <div class="context">
+            <pre>
+您好,
+您的问题已确认,已反馈相关人员进行确认,感谢您的反馈.
+感谢您的致信,欢迎持续关注对接平台相关信息.</pre>
+
+          </div>
+          <div class="attachment">
+            <a href="xxx" target="_black">图片名称.jpg</a>
+            <a href="xxx" target="_black">图片名称.jpg</a>
+            <a href="xxx" target="_black">图片名称.jpg</a>
+            <a href="xxx" target="_black">图片名称.jpg</a>
+            <a href="xxx" target="_black">图片名称.jpg</a>
+            <a href="xxx" target="_black">图片名称.jpg</a>
+            <a href="xxx" target="_black">图片名称.jpg</a>
+
+
+          </div>
+        </li>
+        <li class="order-item">
+          <div class="header">
+            <span class="name">来自管理员的回答</span> <span class="time">2019/04/16 14:00</span>
+          </div>
+          <div class="context">
+            <pre>
+您好,
+您的问题已确认,已反馈相关人员进行确认,感谢您的反馈.
+感谢您的致信,欢迎持续关注对接平台相关信息.
+</pre>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer">
+      <div class="name">留言内容:</div>
+      <textarea placeholder="请输入您的问题" class="textarea"></textarea>
+      <div class="attachment">
+        <div class="attachment-list">
+          <!-- <span>
+            <a href="xxx" target="_black">图片名称1.jpg</a>
+            <span class="delete">删除</span>
+          </span>
+          <span>
+            <a href="xxx" target="_black">图片名称2.jpg</a>
+            <span class="delete">删除</span>
+          </span>
+          <span>
+            <a href="xxx" target="_black">图片名称3.jpg</a>
+            <span class="delete">删除</span>
+          </span> -->
+        </div>
+
+
+
+        <span class="add-attachment"><input type="file" id="add-attachment-file">添加附件</span>
+      </div>
+      <button class="submit">提&nbsp;&nbsp;&nbsp;交</button>
+    </div>
+  </div>
+</body>
+<script src="jquery.3.3.1.js"></script>
+<template id="temp-attachment">
+  <span>
+    <a href="" target="_black"></a>
+    <span class="delete">删除</span>
+  </span>
+</template>
+<script>
+  $(".close-name").click(function () {
+    alert('关闭工单')
+  })
+
+  $('.delete').click(function () {
+    removeAttachment.apply(this)
+  })
+
+  function removeAttachment() {
+    $(this).parent().remove();
+  }
+
+  // 添加附件
+  document.getElementById('add-attachment-file').addEventListener('change', function (event) {
+    var file = event.target.files[0];
+    console.log(file)
+    
+    document.getElementById('add-attachment-file').value = '';
+    addFile(file, function () {
+      // 提交成功
+    })
+
+  })
+
+  function addFile(file, callback) {
+    // 提交后台
+    setTimeout(() => {
+      var html = $('#temp-attachment').html()
+      var $dom = $(html)
+      $dom.find('a').attr('href', 'xxx')
+      $dom.find('a').text(file.name)
+      $dom.find('.delete').click(function () {
+        removeAttachment.apply(this)
+      })
+      $('.footer .attachment-list').append($dom)
+      typeof callback === 'function' && callback()
+    }, 1000);
+
+  }
+</script>
+
+
+</html>

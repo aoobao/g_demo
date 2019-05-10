@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>404</title>
+  <link rel="stylesheet" href="./normalize.css">
+  <style>
+    .container {
+      width: 100%;
+      height: 100vh;
+      background-color: #101b40;
+      overflow: hidden;
+    }
+
+    .err {
+      width: 900px;
+      height: 572px;
+      background-image: url('./err.png');
+      margin: 20px auto 0;
+      padding-top: 1px;
+    }
+
+    .app {
+      color: #fff;
+    }
+
+    h1 {
+      font-size: 127px;
+      font-family: Poppins;
+      /* margin: 0; */
+      margin: 100px 0 50px;
+    }
+
+    .text {
+      font-size: 22px;
+    }
+
+    .text-en {
+      font-size: 16px;
+    }
+
+    .button {
+      margin-top: 50px;
+      background-color: #e24b2d;
+      width: 112px;
+      height: 33px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="err">
+      <div class="app">
+        <h1>404</h1>
+        <p class="text">这个页面不见了</p>
+        <p class="text-en">THIS PAGE IS MISSING</p>
+        <div class="button" onclick="gohome()">返回首页</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function gohome(){
+      window.location.href = '/province/'
+    }
+  </script>
+</body>
+
+</html>

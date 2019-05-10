@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>智慧消防</title>
+  <link rel="stylesheet" href="./normalize.css" />
+  <link rel="stylesheet" href="./sso.css" />
+  <style>
+    body {
+      font-family: MicrosoftYaHei;
+      font-size: 14px;
+    }
+
+    .body {
+      top: 80px;
+      height: calc(100% - 47px - 80px);
+      background-color: #f5f7f8;
+    }
+
+    .body.register {
+      background-color: #f5f7f8;
+    }
+
+    .body.register .body-container {
+      width: 100%;
+      overflow-y: auto;
+    }
+
+    .body.register .body-container .fixed-box .step-box .step-container.active .step-num {
+      background: #438eff;
+    }
+
+    .body.register .body-container .fixed-box .step-box .step-process .process-line {
+      background: #438eff;
+    }
+
+    .rows .input-box .btn {
+      background: #438eff;
+    }
+
+    .rows .input-box.verify-code .send-verify-code,
+    .rows .input-box.verify-code .reset-password-send-verify-code,
+    .rows .input-box.verify-code .send-register-verify-code,
+    .rows .input-box.verify-code .send-login-verify-code {
+      color: #438eff;
+    }
+
+    .rows .input-box .btn:hover {
+      background: #438eff;
+    }
+
+
+
+    .form-box .columns {
+      width: 50%;
+      float: left;
+    }
+
+    .rows .input-box {
+      width: 380px;
+      margin: 0 auto 16px auto;
+      position: relative;
+    }
+
+
+
+    .rows .input-box.nav-text .title .line {
+      width: 1px;
+      height: 24px;
+      background: #f0f2f5;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .rows .input-box.nav-text {
+      height: 40px;
+    }
+
+    .rows .input-box.nav-text .remark {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      color: #6b6b6b;
+    }
+
+
+
+    .body.register .body-container .fixed-box .register-window .register-ul .register-li .register-success .iconBox {
+      width: 80px;
+      height: 80px;
+      /* position: relative; */
+      position: initial;
+      background-color: red;
+      margin: 0 auto 32px auto;
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 47px;
+      background-color: #303030;
+      color: #6a6a6a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form-box .input-text {
+      width: 100%;
+      height: 40px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      color: #7e7e7e;
+    }
+
+    .rows .input-box.nav-text .title {
+      width: 150px;
+      position: absolute;
+      left: 1px;
+      top: 1px;
+      z-index: 10;
+      cursor: pointer;
+      overflow: hidden;
+      background-color: transparent;
+    }
+
+    .form-box .rows .padding-text {
+      padding-left: 160px;
+    }
+
+    .required-text {
+      color: red;
+      margin-right: 5px;
+      margin-top: 5px;
+    }
+
+    .input-text-title {
+      margin-right: 10px;
+    }
+
+    .header {
+      width: 100%;
+      height: 80px;
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .header-body {
+      width: 840px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      height: 100%;
+    }
+
+    .split-line {
+      width: 1px;
+      height: 60%;
+      background-color: #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <div class="header-body">
+      <img src="./header.png" class="logo" alt="">
+      <div class="split-line"></div>
+      <h2 style="margin-left: 10px;">注册信息</h2>
+    </div>
+  </div>
+  <div class="body register">
+    <div class="body-container">
+      <div class="fixed-box">
+        <div class="step-box">
+          <div class="step-container active">
+            <p>基础资料</p>
+            <div class="step-num">
+              01
+            </div>
+          </div>
+          <div class="step-container">
+            <p>线上认证</p>
+            <div class="step-num">
+              02
+            </div>
+          </div>
+          <div class="step-container">
+            <p>提交成功</p>
+            <div class="step-num">
+              03
+            </div>
+          </div>
+          <div class="step-process">
+            <div class="process-line"></div>
+          </div>
+        </div>
+        <div class="register-window">
+          <ul class="register-ul">
+            <li class="register-li">
+              <!--        step 1 verify phone        -->
+              <div class="form-box">
+                <form id="register-step-1" onsubmit="return false;">
+                  <div class="rows">
+                    <div class="input-box input-mobile ">
+                      <div class="qj-select mobile-pre-select">
+                        <!-- <input class="qj-select-inner" type="text" readonly="readonly" placeholder="请选择" value="手机号:"> -->
+                        <span class="input-text">手机号:</span>
+                        <span class="line"></span>
+                      </div>
+                      <input type="tel" maxlength="11" name="mobile" id="mobile"
+                        class="reg-phone vf-required vf-phone mobile-inp" data-name="手机号" placeholder="您的手机号"
+                        autocomplete="off" style=" background-position: 98% 50%; cursor: auto;" />
+                      <!-- <div class="error required">手机号不正确</div> -->
+                    </div>
+                  </div>
+                  <div class="rows ">
+                    <div class="input-box verify-code ">
+                      <input type="tel" maxlength="6" name="verifyCode" id="verify_code"
+                        class="vf-required vf-verify-code" data-name="短信验证码" placeholder="您手机上的验证码" />
+                      <div class="send-register-verify-code" id="send-register-verify-code"
+                        style="display: flex;justify-content: center;align-items: center;">
+                        获取验证码
+                      </div>
+                      <!-- <div class="error required">短信验证码不能为空!</div> -->
+                    </div>
+                  </div>
+                  <div class="rows ">
+                    <div class="input-box ">
+                      <input type="password" id="password" name="password" autocomplete="new-password"
+                        class="vf-required vf-password" data-ajax="1" data-name="密码"
+                        placeholder="您的密码（8-20位，同时包含字母、数字）" />
+                      <!-- <div class="error required">密码不能为空!</div> -->
+                    </div>
+                  </div>
+                  <div class="rows confirm-row">
+                    <div class="input-box">
+                      <a class="btn" data-text="请稍等..." id="register-step-1-submit">下一步</a>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </li>
+            <li class="register-li">
+              <!--        step 2 complete information        -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <div class="form-box" style="width: 842px">
+                <div action="" id="register-step-2">
+                  <div class="columns">
+                    <div class="rows">
+                      <div class="input-box nav-text">
+                        <div class="title">
+                          <span class="input-text">
+                            <span class="required-text">*</span>
+                            <span class="input-text-title">运营单位全称</span>
+                          </span>
+                          <span class="line"></span>
+                        </div>
+                        <input type="text" maxlength="11" name="companyName" id="company_name" class="padding-text"
+                          data-name="公司名称" placeholder="您的公司名称" autocomplete="off" />
+                      </div>
+                    </div>
+                    <div class="rows">
+                      <div class="input-box nav-text">
+                        <div class="title">
+                          <span class="input-text">
+                            <span class="required-text">*</span>
+                            <span class="input-text-title">联系人姓名 </span>
+                          </span>
+                          <span class="line"></span>
+                        </div>
+
+                        <input type="text" class="padding-text" placeholder="填写姓名" autocomplete="off" />
+                      </div>
+                    </div>
+                    <div class="rows">
+                      <div class="input-box nav-text">
+                        <div class="title">
+                          <span class="input-text">
+                            <span class="required-text">*</span>
+                            <span class="input-text-title">联系方式 </span>
+                          </span>
+                          <span class="line"></span>
+                        </div>
+                        <input type="text" class="padding-text" placeholder="您的手机号" autocomplete="off" />
+                      </div>
+                    </div>
+                    <div class="rows">
+                      <div class="input-box nav-text">
+                        <div class="title">
+
+                          <span class="input-text">
+                            <span class="required-text">*</span>
+                            <span class="input-text-title">接入社会单位数目</span></span>
+                          <span class="line"></span>
+                        </div>
+
+                        <input type="text" class="padding-text" placeholder="请输入数量" autocomplete="off" />
+                      </div>
+                    </div>
+                    <div class="rows">
+                      <div class="input-box nav-text">
+                        <div class="title">
+                          <span class="input-text">
+                            <span class="required-text">*</span>
+                            <span class="input-text-title">认证材料</span></span>
+                          <span class="line"></span>
+                        </div>
+
+                        <input type="file" class="padding-text" autocomplete="off" />
+                      </div>
+                    </div>
+
+                    <div class="rows">
+                      <div class="input-box nav-text">
+                        <div class="title">
+                          <span class="input-text">
+                            <span class="required-text">*</span>
+                            <span class="input-text-title">开发单位名称</span></span>
+                          <span class="line"></span>
+                        </div>
+
+                        <input type="text" class="padding-text" placeholder="请输入单位名称" autocomplete="off" />
+                      </div>
+                    </div>
+
+                    <div class="rows">
+                      <div class="input-box nav-text">
+                        <div class="title">
+                          <span class="input-text">
+                            <span class="required-text">*</span>
+                            <span class="input-text-title">联系人姓名</span></span>
+                          <span class="line"></span>
+                        </div>
+
+                        <input type="text" class="padding-text" placeholder="填写姓名" autocomplete="off" />
+                      </div>
+                    </div>
+
+                    <div class="rows">
+                      <div class="input-box nav-text">
+                        <div class="title">
+                          <span class="input-text">
+                            <span class="required-text">*</span>
+                            <span class="input-text-title">联系方式</span></span>
+                          <span class="line"></span>
+                        </div>
+
+                        <input type="text" class="padding-text" placeholder="请输入数量" autocomplete="off" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="columns">
+                    <div class="rows">
+                      <div class="input-box nav-text">
+                        <div class="title">
+                          <span class="input-text">
+                            <span class="required-text">*</span>
+                            <span class="input-text-title">运营单位简称</span></span>
+                          <span class="line"></span>
+                        </div>
+                        <input type="text" class="padding-text" placeholder="请输入单位简称" autocomplete="off" />
+                      </div>
+                    </div>
+                    <div class="rows">
+                      <div class="input-box nav-text">
+                        <div class="title">
+                          <span class="input-text">
+                            <span class="required-text">*</span>
+                            <span class="input-text-title">联系人职务</span></span>
+                          <span class="line"></span>
+                        </div>
+
+                        <input type="text" class="padding-text" placeholder="填写姓名" autocomplete="off" />
+                      </div>
+                    </div>
+                    <div class="rows">
+                      <div class="input-box nav-text">
+                        <div class="title">
+                          <span class="input-text">
+                            <span class="required-text">*</span>
+                            <span class="input-text-title">公司地址</span></span>
+                          <span class="line"></span>
+                        </div>
+                        <input type="text" class="padding-text" placeholder="请输入内容" autocomplete="off" />
+                      </div>
+                    </div>
+                    <div class="rows">
+                      <div class="input-box nav-text">
+                        <div class="remark">
+                          用于对接成功后数据量核实参考
+                        </div>
+                      </div>
+                    </div>
+                    <div class="rows">
+                      <div class="input-box nav-text">
+                        <div class="remark">
+                          您的工牌或者公司标志性照片
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="rows">
+                      <div class="input-box nav-text">
+                        <div class="remark">
+                          运营单位与开发单位不一致请填写开发单位信息
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="rows">
+                      <div class="input-box nav-text">
+                        <div class="title">
+                          <span class="input-text">
+                            <span class="required-text">*</span>
+                            <span class="input-text-title">联系人职务</span></span>
+                          <span class="line"></span>
+                        </div>
+
+                        <input type="text" class="padding-text" placeholder="填写姓名" autocomplete="off" />
+                      </div>
+                    </div>
+
+                    <div class="rows">
+                      <div class="input-box nav-text">
+                        <div class="title">
+                          <span class="input-text">
+                            <span class="required-text">*</span>
+                            <span class="input-text-title">公司地址</span></span>
+                          <span class="line"></span>
+                        </div>
+
+                        <input type="text" class="padding-text" placeholder="请填写内容" autocomplete="off" />
+                      </div>
+                    </div>
+                  </div>
+                  <div style="clear: both;"></div>
+
+                  <div class="rows confirm-row">
+                    <div class="input-box">
+                      <button type="button" class="btn" data-text="请稍等..." id="register-step-2-submit" data-pc="true">
+                        确认提交
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <li class="register-li" style="display: none;">
+
+            </li>
+            <li class="register-li">
+              <div class="register-success">
+                <div class="iconBox"></div>
+                <h1>提交成功! 请耐心等待后台审核</h1>
+                <p>审核结果将以短信形式通知负责人,请注意查收</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>
+      Copyright ® 2016 杭州某某某
+      <!-- <a href="">ICP证浙 B2-43242314</a>  -->
+    </span>
+  </div>
+</body>
+<script src="./jquery.3.3.1.js"></script>
+<script>
+  var stepNum = 1 // 设置初始所在位置.
+
+  $('#send-register-verify-code').click(function () {
+    var str = $.trim($(this).text())
+    if (str == '获取验证码') {
+      // 模拟后台请求接口,获取验证码,成功后返回倒计时
+      setTimeout(() => {
+        yzmdjs(60)
+      }, 500)
+    }
+  })
+
+  function yzmdjs(djs_num) {
+    var str = djs_num === 0 ? '获取验证码' : djs_num
+    $('#send-register-verify-code').text(str)
+    if (djs_num > 0) {
+      setTimeout(() => {
+        yzmdjs(djs_num - 1)
+      }, 1000)
+    }
+  }
+
+  updateStepNum(stepNum)
+
+  // 步骤1
+  $('#register-step-1-submit').click(function () {
+    setTimeout(() => {
+      updateStepNum(2)
+    }, 500)
+  })
+
+  // 步骤2确认提交
+  $('#register-step-2-submit').click(function () {
+    setTimeout(() => {
+      updateStepNum(3)
+    }, 500)
+  })
+
+  // 更新第几步
+  function updateStepNum(num) {
+    var $container = $('.step-container')
+    var $registerLi = $('.register-li')
+    for (let i = 0; i < 3; i++) {
+      var $step = $container.eq(i)
+      var $li = $registerLi.eq(i)
+      if (i < num) {
+        $step.addClass('active')
+      } else {
+        $step.removeClass('active')
+      }
+      if (i + 1 == num) {
+        $li.css('display', '')
+      } else {
+        $li.css('display', 'none')
+      }
+    }
+
+    var p = ((num / 3) * 100).toFixed(5) + '%'
+
+    $('.process-line').css('width', p)
+  }
+</script>
+
+</html>

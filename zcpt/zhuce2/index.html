@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>注册</title>
+  <link rel="stylesheet" href="http://36.26.79.155:8888/official/static/abut/css/normalize.css">
+  <link rel="stylesheet" href="http://36.26.79.155:8888/official/static/abut/css/register2.css">
+</head>
+
+<body>
+  <div class="header">
+    <div class="header-body">
+      <img src="http://36.26.79.155:8888/official/static/abut/images/register_logo.png" class="logo" alt="">
+      <div class="split-line"></div>
+      <h2 style="margin-left: 10px;">注册信息</h2>
+    </div>
+  </div>
+  <div class="container">
+    <div class="step-box">
+      <div class="step-container active">
+        <p>基础资料</p>
+        <div class="step-num">
+          01
+        </div>
+      </div>
+      <div class="step-container">
+        <p>线上认证</p>
+        <div class="step-num">
+          02
+        </div>
+      </div>
+      <div class="step-container">
+        <p>提交成功</p>
+        <div class="step-num">
+          03
+        </div>
+      </div>
+      <div class="step-process">
+        <div class="process-line"></div>
+      </div>
+    </div>
+
+    <div class="form-box">
+      <div action="" id="register-step-2">
+        <div class="columns">
+          <div class="rows">
+            <div class="input-box nav-text">
+              <div class="title">
+                <span class="input-text">
+                  <span class="required-text">*</span>
+                  <span class="input-text-title">运营单位全称</span>
+                </span>
+                <span class="line"></span>
+              </div>
+              <div style="position:relative;width:100%;">
+                <input type="text" maxlength="64" name="producerName" id="producerName"
+                  class="padding-text  valinfo-err" data-name="公司名称" placeholder="您的公司名称" errmessage="运营单位全称不可为空"
+                  value="" autocomplete="off" />
+                <div id="word"></div>
+              </div>
+              <!-- <input type="text" maxlength="11" name="companyName" id="company_name" class="padding-text"
+                data-name="公司名称" placeholder="您的公司名称" autocomplete="off" /> -->
+            </div>
+          </div>
+          <div class="rows">
+            <div class="input-box nav-text">
+              <div class="title">
+                <span class="input-text">
+                  <span class="required-text">*</span>
+                  <span class="input-text-title">运营单位简称</span></span>
+                <span class="line"></span>
+              </div>
+              <input type="text" class="padding-text  valinfo-err" placeholder="请输入单位简称" id="producerNameSimple"
+                errmessage="运营单位简称不可为空" value="" autocomplete="off" />
+            </div>
+          </div>
+          <div class="rows">
+            <div class="input-box nav-text">
+              <div class="title">
+                <span class="input-text">
+                  <span class="required-text">*</span>
+                  <span class="input-text-title">联系人姓名 </span>
+                </span>
+                <span class="line"></span>
+              </div>
+
+              <input type="text" class="padding-text  valinfo-err" placeholder="填写姓名" id="producerContactPsn"
+                errmessage="联系人姓名不可为空" value="" autocomplete="off" />
+            </div>
+          </div>
+          <div class="rows">
+            <div class="input-box nav-text">
+              <div class="title">
+                <span class="input-text">
+                  <span class="required-text">*</span>
+                  <span class="input-text-title">联系方式 </span>
+                </span>
+                <span class="line"></span>
+              </div>
+              <input type="text" class="padding-text  valinfo-err" placeholder="您的手机号" id="producerContactPsnMobile"
+                errmessage="联系方式不可为空" value="" autocomplete="off" />
+            </div>
+          </div>
+          <div class="rows">
+            <div class="input-box nav-text">
+              <div class="title">
+
+                <span class="input-text">
+                  <span class="required-text">*</span>
+                  <span class="input-text-title">接入社会单位数目</span></span>
+                <span class="line"></span>
+              </div>
+
+              <input type="number" class="padding-text valinfo-err" placeholder="请输入数量" id="producerJoinCount"
+                errmessage="接入社会单位数目不可为空" value="" autocomplete="off" />
+
+              <span class="remark">
+                用于对接成功后数据量核实参考
+              </span>
+            </div>
+          </div>
+          <div class="rows">
+            <div class="input-box nav-text">
+              <div class="title">
+                <span class="input-text">
+                  <span class="required-text">*</span>
+                  <span class="input-text-title">联系人职务</span></span>
+                <span class="line"></span>
+              </div>
+
+              <input type="text" class="padding-text  valinfo-err" placeholder="填写职务" id="producerContactPsnJob"
+                errmessage="联系人职务不可为空" value="" autocomplete="off" />
+            </div>
+          </div>
+          <div class="rows">
+            <div class="input-box nav-text">
+              <div class="title">
+                <span class="input-text">
+                  <span class="required-text">*</span>
+                  <span class="input-text-title">公司地址</span></span>
+                <span class="line"></span>
+              </div>
+              <input type="text" class="padding-text  valinfo-err" placeholder="请输入内容" id="producerAddress"
+                errmessage="公司地址不可为空" value="" autocomplete="off" />
+            </div>
+          </div>
+          <div class="rows" style="height: 90px">
+            <div class="input-box nav-text">
+              <div class="title">
+                <span class="input-text">
+                  <span class="required-text">*</span>
+                  <span class="input-text-title">认证材料</span></span>
+                <span class="line"></span>
+              </div>
+
+
+              <div class="click_upload_box">
+
+                <img src="/official/static/images/click_upload.png" class="padding-text js_upload">
+
+
+              </div>
+              <input class="send_file_input padding-text" autocomplete="off" id="authImgFile" style="display:none;"
+                name="authImgFile" errmessage="认证材料图片不可为空" type="file" accept="image/*" />
+              <span class="remark">
+                您的工牌或者名片
+              </span>
+            </div>
+          </div>
+
+          <div class="rows">
+            <div class="input-box nav-text">
+              <div class="title">
+                <span class="input-text">
+                  <span class="required-text">*</span>
+                  <span class="input-text-title">开发单位名称</span></span>
+                <span class="line"></span>
+              </div>
+
+              <input type="text" class="padding-text  valinfo-err" placeholder="请输入单位名称" id="devName"
+                errmessage="开发单位名称不可为空" value="" autocomplete="off" />
+              <span class="remark">
+                运营单位与开发单位不一致请填写开发单位信息
+              </span>
+            </div>
+          </div>
+
+          <div class="rows">
+            <div class="input-box nav-text">
+              <div class="title">
+                <span class="input-text">
+                  <span class="required-text">*</span>
+                  <span class="input-text-title">联系人姓名</span></span>
+                <span class="line"></span>
+              </div>
+
+              <input type="text" class="padding-text" placeholder="填写姓名" id="devContactPsn" errmessage="联系人姓名不可为空"
+                value="" autocomplete="off" />
+            </div>
+          </div>
+
+          <div class="rows">
+            <div class="input-box nav-text">
+              <div class="title">
+                <span class="input-text">
+                  <span class="required-text">*</span>
+                  <span class="input-text-title">联系方式</span></span>
+                <span class="line"></span>
+              </div>
+
+              <input type="text" class="padding-text  valinfo-err" placeholder="请输入手机号码" id="devContactPsnMobile"
+                errmessage="联系方式不可为空" value="" autocomplete="off" />
+            </div>
+          </div>
+        </div>
+        <div class="columns">
+
+
+          <div class="rows">
+            <div class="input-box nav-text">
+              <div class="title">
+                <span class="input-text">
+                  <span class="required-text">*</span>
+                  <span class="input-text-title">联系人职务</span></span>
+                <span class="line"></span>
+              </div>
+
+              <input type="text" class="padding-text  valinfo-err" placeholder="填写职务" errmessage="联系人职务不可为空"
+                id="devContactPsnJob" value="" autocomplete="off" />
+            </div>
+          </div>
+
+          <div class="rows">
+            <div class="input-box nav-text">
+              <div class="title">
+                <span class="input-text">
+                  <span class="required-text">*</span>
+                  <span class="input-text-title">公司地址</span></span>
+                <span class="line"></span>
+              </div>
+
+              <input type="text" class="padding-text  valinfo-err" id="devAddress" placeholder="请填写内容"
+                errmessage="公司地址不可为空" value="" autocomplete="off" />
+            </div>
+          </div>
+          <div class="rows">
+            <div class="input-box nav-text">
+              <div class="title">
+                <span class="input-text">
+                  <span class="required-text">*</span>
+                  <span class="input-text-title">设备类型</span></span>
+                <span class="line"></span>
+              </div>
+              <div
+                style="padding-left: 160px;width: 500px;display: flex;justify-content: flex-start;align-items: center;">
+                <input style="width: 12px;margin-right: 5px;" name="deviceType" id="remoteControl"
+                  type="checkbox"><label for="remoteControl" style="margin-right: 5px;">远程监控</label>
+                <input style="width: 12px;margin-right: 5px;" name="deviceType" id="water" type="checkbox"><label
+                  style="margin-right: 5px;" for="water">智慧用水</label>
+                <input style="width: 12px;margin-right: 5px;" name="deviceType" id="electricity" type="checkbox"><label
+                  for="electricity" style="margin-right: 5px;">智慧用电</label>
+                <input style="width: 12px;margin-right: 5px;" name="deviceType" id="warning" type="checkbox"><label
+                  for="warning" style="margin-right: 5px;">智能预警</label>
+                <input style="width: 12px;margin-right: 5px;" name="deviceType" id="piles" type="checkbox"><label
+                  style="margin-right: 5px;" for="piles">智能充电桩</label>
+
+
+                <!-- <label><input id="remoteControl" name="deviceType" type="checkbox" />远程监控 </label>
+                <label><input id="water" name="deviceType" type="checkbox"   />智慧用水 </label>
+                <label><input id="electricity" name="deviceType" type="checkbox"  />智慧用电 </label>
+                <label><input id="warning" name="deviceType" type="checkbox" />智能预警 </label>
+                <label><input id="piles" name="deviceType" type="checkbox" />智能充电桩 </label> -->
+              </div>
+            </div>
+          </div>
+
+          <div style="clear: both;"></div>
+
+          <div class="rows confirm-row">
+            <div class="input-box center-button-box">
+              <button type="button" class="btn" data-text="请稍等..." id="register-step-2-submit" data-pc="true">
+                确认提交
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <span>
+      Copyright © 2018-2028 智慧消防 V0.0.1
+      <!-- <a href="">ICP证浙 B2-43242314</a>  -->
+    </span>
+  </div>
+  <input type="text" id="phoneNum" value="" hidden="hidden" />
+  <script src="http://36.26.79.155:8888/official/static/jquery/jquery-1.9.1.js"></script>
+  <script>
+    $(function () {
+      document.getElementById('remoteControl').checked = false;
+      document.getElementById('water').checked = false;
+      document.getElementById('electricity').checked = false;
+      document.getElementById('warning').checked = false;
+      document.getElementById('piles').checked = false;
+
+      var deviceType = "";
+      if (deviceType.indexOf("1") != -1) {
+        document.getElementById('remoteControl').checked = true;
+      }
+      if (deviceType.indexOf("2") != -1) {
+        document.getElementById('water').checked = true;
+      }
+      if (deviceType.indexOf("3") != -1) {
+        document.getElementById('electricity').checked = true;
+      }
+      if (deviceType.indexOf("4") != -1) {
+        document.getElementById('warning').checked = true;
+      }
+      if (deviceType.indexOf("5") != -1) {
+        document.getElementById('piles').checked = true;
+      }
+
+      // 发送ajax数据获取运营商单位数据
+      var unitData = [];
+      $.ajax({
+        url: "http://36.26.79.155:8888/official/a/abut/abutButtInfo/getProducerFullName",
+        type: 'POST',
+        cache: false,
+        crossDomain: true,
+        success: function (data) {
+          if (data.code == 0) {
+            unitData = data.data;
+          } else {
+            alert(data.msg);
+          }
+        }
+      });
+
+      //当键盘键被松开时获取数据
+      $('#producerName').keyup(function () {
+        var keywords = $(this).val();
+        if (keywords == '') {
+          $('#word').hide();
+          return
+        };
+        $('#word').empty().show();
+        // 模糊匹配运营单位数据
+        let data = []
+        unitData.forEach((item, index) => {
+          if (item.indexOf(keywords) > -1) {
+            data.push(item)
+          }
+        });
+        if (data.length == 0) {
+          $('#word').append('<div class="error" style="padding:10px;">暂无数据  "' + keywords + '"</div>');
+        } else {
+          $.each(data, function () {
+            $('#word').append('<div class="click_work">' + this + '</div>');
+          });
+        }
+      })
+      //点击搜索数据复制给搜索框
+      $(document).on('click', '.click_work', function (e) {
+        e.stopPropagation();
+        var word = $(this).text();
+        $('#producerName').val(word);
+        $('#word').hide();
+      });
+      $(document).click(function () {
+        $('#word').hide();
+      });
+
+
+
+      //提交数据
+
+      $('#register-step-2-submit').click(function () {
+        if (!existValue('.valinfo-err')) {
+          return;
+        }
+
+        var file = $("#authImgFile")[0].files[0];
+        debugger;
+        if (!file) {
+          var oldimg = $('#imagePathold')
+          if (oldimg.length == 0) {
+            alert('必须上传图片')
+            return
+          }
+        }
+        var deviceTypeResult = "";
+        if (document.getElementById('remoteControl').checked) {
+          deviceTypeResult += "1";
+        }
+        if (document.getElementById('water').checked) {
+          deviceTypeResult += "2";
+        }
+        if (document.getElementById('electricity').checked) {
+          deviceTypeResult += "3";
+        }
+        if (document.getElementById('warning').checked) {
+          deviceTypeResult += "4";
+        }
+        if (document.getElementById('piles').checked) {
+          deviceTypeResult += "5";
+        }
+        var formData = new FormData();
+
+        if (file) formData.append('imagePath1', file);
+        // formData.append('phoneNum',$("#mobile").val());
+        formData.append('code', $("#code").val());
+        formData.append('password', $("#password").val());
+        formData.append('producerName', $("#producerName").val());
+        formData.append('producerNameSimple', $("#producerNameSimple").val());
+        formData.append('producerContactPsn', $("#producerContactPsn").val());
+        formData.append('producerContactPsnJob', $("#producerContactPsnJob").val());
+        formData.append('producerContactPsnMobile', $("#producerContactPsnMobile").val());
+        formData.append('producerAddress', $("#producerAddress").val());
+        formData.append('producerJoinCount', $("#producerJoinCount").val());
+        formData.append('devName', $("#devName").val());
+        formData.append('devContactPsn', $("#devContactPsn").val());
+        formData.append('devContactPsnJob', $("#devContactPsnJob").val());
+        formData.append('devContactPsnMobile', $("#devContactPsnMobile").val());
+        formData.append('devAddress', $("#devAddress").val());
+        formData.append('phoneNum', $("#phoneNum").val());
+        formData.append('deviceType', deviceTypeResult);
+        $.ajax({
+          url: "/official/a/abut/abutButtRegister/register/saveinfo",
+          type: 'POST',
+          cache: false,
+          data: formData,
+          processData: false,
+          contentType: false,
+          xhrFields: {
+            withCredentials: true
+          },
+          crossDomain: true,
+          success: function (data) {
+            if (data.code == 0) {
+              window.location = 'http://36.26.79.155:8888/official/a/abut/abutButtRegister/register3';
+            } else {
+              alert(data.msg);
+            }
+          }
+        });
+      })
+
+
+
+
+
+
+
+    })
+
+
+    function existValue(selector) {
+      var $dom = $(selector)
+      for (var i = 0; i < $dom.length; i++) {
+        var $eq = $dom.eq(i)
+        var text = $.trim($eq.val())
+        if (text == '') {
+          var err = $eq.attr('errmessage') || '必填项不可为空'
+          alert(err);
+          return false
+        }
+      }
+      return true
+    }
+  </script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      // 点击显示上传图片
+      $('.click_upload_box').click(function () {
+        $('.send_file_input').click();
+      });
+      //图片内容改变时触发
+      $('#authImgFile').change(function () {
+        var file = $("#authImgFile")[0];
+        if (file.files && file.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function (evt) {
+            $(".js_upload").attr('src', evt.target.result);
+          }
+          reader.readAsDataURL(file.files[0]);
+        } else {
+          // $(".js_upload").attr('src', file.value);
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

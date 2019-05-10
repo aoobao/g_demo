@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- <custom-picture>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    #shadow-root
+    ___________________________
+
+    <img src="http://qn.fengyitong.name/1.jpg">
+    <cite>A Nice Kitten!</cite>
+  </custom-picture> -->
+  <div class="dom"></div>
+  <input type="text" placeholder="test">
+</body>
+<script>
+  let el = document.querySelector('.dom');
+  el.attachShadow({
+    mode: 'open'
+  });
+  // Just like prototype & constructor bi-directional references, we have...
+  //el.shadowRoot; // the shadow root.
+  //el.shadowRoot.host; // the element itself.
+
+  // put something in shadow DOM
+  el.shadowRoot.innerHTML = 'Hi I am shadowed!';
+
+  // Like any other normal DOM operation.
+  let hello = document.createElement('span');
+  hello.textContent = 'Hi I am shadowed but wrapped in span';
+  el.shadowRoot.appendChild(hello);
+</script>
+
+</html>

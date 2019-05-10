@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <button onclick="encodeJson()">压缩</button>
+  <button onclick="decodeJson()">解压缩</button>
+  <div id="text"></div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.0/jquery.min.js"></script>
+<script>
+  function encodeJson() {
+    $.getJSON('./120100.json', function (result) {
+      // console.log(result)
+      var encodeJson = convert2Echarts(result)
+      document.getElementById('text').innerText = encodeJson
+    })
+  }
+
+  function decodeJson() {
+    var jsonStr = document.getElementById('text').innerText
+    var json = decodeConvertEcharts(jsonStr)
+    document.getElementById('text').innerText = JSON.stringify(json)
+  }
+
+
+  // geojson 中的feature.geometry.coordinates 进行编码
+  // encodeOffsets 偏移量
+  function convert2Echarts(json) {
+    var results = "";
+    // Meta tag
+    json.UTF8Encoding = true;
+    var features = json.features;
+    if (!features) {
+      return;
+    }
+    features.forEach(function (feature) {
+      var encodeOffsets = feature.geometry.encodeOffsets = [];
+      var coordinates = feature.geometry.coordinates;
+      if (feature.geometry.type === 'Polygon') {
+        coordinates.forEach(function (coordinate, idx) {
+          coordinates[idx] = encodePolygon(
+            coordinate, encodeOffsets[idx] = []
+          );
+        });
+      } else if (feature.geometry.type === 'MultiPolygon') {
+        coordinates.forEach(function (polygon, idx1) {
+          encodeOffsets[idx1] = [];
+          polygon.forEach(function (coordinate, idx2) {
+            coordinates[idx1][idx2] = encodePolygon(
+              coordinate, encodeOffsets[idx1][idx2] = []
+            );
+          });
+        });
+      }
+    });
+    results = JSON.stringify(json);
+    return results;
+  }
+
+  function decodeConvertEcharts(jsonStr) {
+    var json = JSON.parse(jsonStr)
+    var features = json.features;
+    if (!features) {
+      return;
+    }
+    features.forEach(function (feature) {
+      var encodeOffsets = feature.geometry.encodeOffsets
+      var coordinates = feature.geometry.coordinates;
+      if (feature.geometry.type === 'Polygon') {
+        coordinates.forEach(function (coordinate, idx) {
+          var list =
+            decodePolygon(coordinate, encodeOffsets[idx])
+          coordinates[idx1][idx2] = list
+        });
+      } else if (feature.geometry.type === 'MultiPolygon') {
+        coordinates.forEach(function (polygon, idx1) {
+          polygon.forEach(function (coordinate, idx2) {
+            var list =
+              decodePolygon(coordinate, encodeOffsets[idx1][idx2])
+            coordinates[idx1][idx2] = list
+          });
+        })
+      }
+    });
+    return json
+  }
+
+  function encodePolygon(coordinate, encodeOffsets) {
+    var result = '';
+
+    var prevX = quantize(coordinate[0][0]);
+    var prevY = quantize(coordinate[0][1]);
+    // Store the origin offset
+    encodeOffsets[0] = prevX;
+    encodeOffsets[1] = prevY;
+
+    for (var i = 0; i < coordinate.length; i++) {
+      var point = coordinate[i];
+      result += encode(point[0], prevX);
+      result += encode(point[1], prevY);
+
+      prevX = quantize(point[0]);
+      prevY = quantize(point[1]);
+    }
+
+    return result;
+  }
+
+  function decodePolygon(coordinate, encodeOffsets) {
+    var result = [];
+    var prevX = encodeOffsets[0];
+    var prevY = encodeOffsets[1];
+
+    for (var i = 0; i < coordinate.length; i += 2) {
+      var x = coordinate.charCodeAt(i) - 64;
+      var y = coordinate.charCodeAt(i + 1) - 64;
+      // ZigZag decoding
+      x = (x >> 1) ^ (-(x & 1));
+      y = (y >> 1) ^ (-(y & 1));
+      // Delta deocding
+      x += prevX;
+      y += prevY;
+
+      prevX = x;
+      prevY = y;
+      // Dequantize
+      result.push([x / 1024, y / 1024]);
+    }
+    return result;
+  }
+
+  function encode(val, prev) {
+    // Quantization
+    val = quantize(val);
+    // var tmp = val;
+    // Delta
+    val = val - prev;
+
+    if (((val << 1) ^ (val >> 15)) + 64 === 8232) {
+      //WTF, 8232 will get syntax error in js code
+      val--;
+    }
+    // ZigZag
+    val = (val << 1) ^ (val >> 15);
+    // add offset and get unicode
+    return String.fromCharCode(val + 64);
+    // var tmp = {'tmp' : str};
+    // try{
+    //     eval("(" + JSON.stringify(tmp) + ")");
+    // }catch(e) {
+    //     console.log(val + 64);
+    // }
+  }
+
+  function quantize(val) {
+    return Math.ceil(val * 1024);
+  }
+</script>
+
+</html>

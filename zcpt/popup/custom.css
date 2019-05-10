@@ -1,0 +1,86 @@
+.dialog-body,
+.dialog-imagelist {
+  min-width: 300px;
+}
+
+.dialog-section {
+  border-radius: 4px;
+}
+
+.dialog-header {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  background-color: #00a2ff;
+  color: #fff;
+}
+
+.dialog-close {
+  background-image: url('./close.png');
+  background-position: 0 0;
+  background-size: 100% 100%;
+}
+
+/* mq 弹出层样式 */
+
+
+.popup_dialog .title {
+  margin-top: 15px;
+  font-size: 16px;
+  color: #7e7e7e;
+}
+
+.popup_dialog input {
+  border: 0;
+  background-color: #f3f3f3;
+  color: #7e7e7e;
+  width: 400px;
+}
+
+.popup_dialog .warn {
+  color: #00a2ff;
+  font-size: 12px;
+}
+
+.popup_dialog .button {
+  display: flex;
+  align-items: center;
+}
+
+.popup_dialog .j_dialogConfirm {
+  /* width: 124px;
+  height: 34px; */
+  padding: 10px 60px;
+  margin: 30px auto 0;
+  background-color: #00a2ff;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 4px;
+
+}
+
+/* 输入框弹出层样式 */
+.popup_div{
+  width: 300px;
+}
+#content-textarea{
+  width: 100%;
+  padding: 0;
+  height: 100px;
+  resize: none;
+}
+
+.popup_div .button{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.popup_div .j_dialogConfirm {
+  cursor: pointer;
+  padding: 10px 60px;
+  margin: 10px auto 0;
+  background-color: #00a2ff;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 4px;
+
+}

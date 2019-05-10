@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+
+<body>
+	<div id="test"></div>
+	<script>
+		// 对数组去重
+		var arr = [5, 2, 1, 10, 2, 1, 2]
+		document.getElementById('test').innerText = arr.toString()
+		// 		创建一个新数组
+		var re = []
+
+		// 循环老数组,取出最小的一个数位置
+		while (arr.length > 0) {
+			document.getElementById('test').innerText = '原数组:' + arr.toString() + ',新数组:' + re.toString()
+			debugger
+			var minIndex = 0
+			for (var i = 1; i < arr.length; i++) {
+				var temp = arr[i];
+				if (arr[minIndex] > temp) {
+					minIndex = i
+				}
+			}
+			// 把最小的数添加到新数组,并且删除老数组对应位置
+			re.push(arr[minIndex])
+			arr.splice(minIndex, 1) // 删除数组对应位置数
+		}
+		document.getElementById('test').innerText = '原数组:' + arr.toString() + ',新数组:' + re.toString()
+	</script>
+</body>
+
+</html>
